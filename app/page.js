@@ -243,12 +243,13 @@ export default function IrisLensLanding() {
       </section>
 
       {/* ── TEAM SECTION ── */}
-      <section id="about-team" style={{ position: "relative", zIndex: 2, padding: "0 40px 100px" }}>
+     <section id="about-team" style={{ position: "relative", zIndex: 2, padding: "0 40px 100px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40 }}>
           <FadeUp delay={0.2}>
             <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Host</h4>
             <p style={{ fontSize: 14, lineHeight: 1.6, color: C.ink }}>
-              <strong>Iris</strong> — A builder focused on the intersection of operational efficiency and AI implementation for work and life.
+              <strong>Iris</strong> — A seasoned AI Product Manager with a background at <strong>Scale AI, Zynga, Arteria AI, and Studdy AI</strong>. 
+              Over the last 4 years, she recognized a significant barrier for beginners entering the space and is now dedicated to empowering the community through practical AI upskilling.
             </p>
           </FadeUp>
           <FadeUp delay={0.3}>
