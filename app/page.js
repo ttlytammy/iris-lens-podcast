@@ -223,8 +223,8 @@ export default function IrisLensLanding() {
         <div style={{ flex: 1, maxWidth: 200, height: 1, background: C.rule }}/>
       </div>
 
-      {/* ── ABOUT / EDITOR'S NOTE ── */}
-      <section id="about" style={{ position: "relative", zIndex: 2, padding: "40px 40px 60px" }}>
+      {/* ── SECTION 1: THE EDITOR'S NOTE ── */}
+      <section id="about" style={{ position: "relative", zIndex: 2, padding: "100px 40px 60px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <FadeUp>
             <p style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: C.iris, marginBottom: 24, textAlign: "center" }}>
@@ -242,22 +242,58 @@ export default function IrisLensLanding() {
         </div>
       </section>
 
-      {/* ── TEAM SECTION ── */}
-     <section id="about-team" style={{ position: "relative", zIndex: 2, padding: "0 40px 100px" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40 }}>
-          <FadeUp delay={0.2}>
-            <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Host</h4>
-            <p style={{ fontSize: 14, lineHeight: 1.6, color: C.ink }}>
-              <strong>Iris</strong> — A seasoned AI Product Manager with a background at <strong>Scale AI, Zynga, Arteria AI, and Studdy AI</strong>. 
-              Over the last 4 years, she recognized a significant barrier for beginners entering the space and is now dedicated to empowering the community through practical AI upskilling.
-            </p>
+      {/* ── SECTION 2: THE COLLECTIVE & MISSION ── */}
+      <section id="about-team" style={{ position: "relative", zIndex: 2, padding: "60px 40px 100px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "60px", marginBottom: "80px" }}>
+            {/* The Mission */}
+            <FadeUp>
+              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12, fontSize: "1.5rem" }}>The Mission</h4>
+              <p style={{ fontSize: 15, lineHeight: 1.6, color: C.ink }}>
+                To bridge the gap between "cool AI demos" and "actual utility." We don't just show you what AI can do; we show you how to make it work for you.
+              </p>
+            </FadeUp>
+
+            {/* The Host (Iris) */}
+            <FadeUp delay={0.1}>
+              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12, fontSize: "1.5rem" }}>The Host</h4>
+              <p style={{ fontSize: 15, lineHeight: 1.6, color: C.ink }}>
+                <strong>Iris</strong> — Seasoned AI Product Manager (Scale AI, Zynga, Arteria AI, Studdy AI). Dedicated to empowering the community through practical AI upskilling.
+              </p>
+            </FadeUp>
+          </div>
+
+          {/* Full Team Grid */}
+          <FadeUp>
+            <h3 className="serif" style={{ fontSize: "1.2rem", letterSpacing: "0.1em", textTransform: "uppercase", color: C.muted, marginBottom: 40, textAlign: "center" }}>The Collective</h3>
           </FadeUp>
-          <FadeUp delay={0.3}>
-            <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Mission</h4>
-            <p style={{ fontSize: 14, lineHeight: 1.6, color: C.ink }}>
-              To bridge the gap between "cool AI demos" and "actual utility" for the modern operator.
-            </p>
-          </FadeUp>
+          
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", 
+            gap: "40px" 
+          }}>
+            <FadeUp delay={0.2}>
+              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 8 }}>Strategy & Growth</h4>
+              <p style={{ fontSize: 13, lineHeight: 1.5 }}><strong>Sama</strong> (Partnerships) + <strong>Tammy</strong> (Growth Strategy).</p>
+            </FadeUp>
+
+            <FadeUp delay={0.3}>
+              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 8 }}>Visuals & Motion</h4>
+              <p style={{ fontSize: 13, lineHeight: 1.5 }}><strong>Radwan</strong> (Motion) + <strong>Khalid</strong> (Cinematography).</p>
+            </FadeUp>
+
+            <FadeUp delay={0.4}>
+              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 8 }}>Editorial & Community</h4>
+              <p style={{ fontSize: 13, lineHeight: 1.5 }}><strong>Amli</strong> (Research) + <strong>Zoey</strong> (Social Media).</p>
+            </FadeUp>
+
+            <FadeUp delay={0.5}>
+              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 8 }}>Audio Production</h4>
+              <p style={{ fontSize: 13, lineHeight: 1.5 }}><strong>Abu</strong> (Lead Audio Engineer).</p>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
