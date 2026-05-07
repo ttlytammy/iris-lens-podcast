@@ -67,26 +67,49 @@ export default function IrisLensLanding() {
         mixBlendMode: "multiply",
       }}/>
 
-      {/* Top masthead */}
+    
+{/* Top masthead */}
       <header style={{
         position: "relative", zIndex: 10,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
+        display: "flex", 
+        flexDirection: "row", // Default to side-by-side
+        alignItems: "center", 
+        justifyContent: "space-between",
         padding: "20px 40px",
         borderBottom: `1px solid ${C.rule}`,
-        background: C.paper
+        background: C.paper,
+        flexWrap: "wrap", // Allows items to drop to next line instead of squishing
+        gap: "16px"
       }}>
+        <style>{`
+          @media (max-width: 768px) {
+            header { 
+              padding: 15px 20px !important; 
+              justify-content: center !important; 
+              text-align: center;
+            }
+            .header-title { font-size: 18px !important; }
+            .header-nav { 
+              justify-content: center !important; 
+              gap: 12px !important; 
+              width: 100%;
+            }
+          }
+        `}</style>
+        
         <div style={{ display: "flex", alignItems: "baseline", gap: 14 }}>
-          <span className="serif" style={{ fontSize: 22, fontWeight: 500, letterSpacing: "-0.02em", fontStyle: "italic", color: C.iris }}>
+          <span className="serif header-title" style={{ fontSize: 22, fontWeight: 500, letterSpacing: "-0.02em", fontStyle: "italic", color: C.iris, whiteSpace: "nowrap" }}>
             IrisLens: Practical AI Upskilling
           </span>
-          <span style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: C.muted }}>
+          <span className="hide-mobile" style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: C.muted }}>
             est. 2026
           </span>
         </div>
-        <nav style={{ display: "flex", gap: 20, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: C.muted, flexWrap: "wrap" }}>
+        
+        <nav className="header-nav" style={{ display: "flex", gap: 20, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: C.muted, flexWrap: "wrap" }}>
           <a href="#home" style={{ textDecoration: "none" }}>Home</a>
-          <a href="#live" style={{ textDecoration: "none", color: C.iris, fontWeight: 600 }}>• Live Recording</a>
-          <a href="#kits" style={{ textDecoration: "none" }}>Workflow Kits</a>
+          <a href="#live" style={{ textDecoration: "none", color: C.iris, fontWeight: 600 }}>• Live</a>
+          <a href="#kits" style={{ textDecoration: "none" }}>Kits</a>
           <a href="#archive" style={{ textDecoration: "none" }}>Archive</a>
           <a href="#about" style={{ textDecoration: "none" }}>About</a>
         </nav>
