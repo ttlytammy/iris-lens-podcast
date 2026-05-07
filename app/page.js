@@ -1,42 +1,40 @@
+temp page.js
+1 parent 
+92edd83
+ commit 
+835cfa0
+1 file changed
+
++138
+-215
+Lines changed: 138 additions & 215 deletions
+File tree
+Filter files…
+app
+page.js
+Search within code
+ 
+‎app/page.js‎
++138
+-215
+Lines changed: 138 additions & 215 deletions
+Original file line number	Original file line	Diff line number	Diff line change
+@@ -1,6 +1,6 @@
 "use client";
 
 import React from "react";
 import { useRive } from "@rive-app/react-canvas";
 import { motion } from "framer-motion";
 
-// ─── Palette ─────────────────────────────────────────────────────────────────
-const C = {
-  paper:   "#F5EFE3", // Vintage cream paper
-  ink:     "#1F1A2E", // Deep near-black
-  iris:    "#5B2D8E", // Brand purple
-  irisDk:  "#3D1E60", 
-  yellow:  "#FFE455", // High-contrast highlight
-  rule:    "rgba(31, 26, 46, 0.18)",
+@@ -15,7 +15,7 @@ const C = {
   muted:   "rgba(31, 26, 46, 0.55)",
 };
 
 // ─── Components ─────────────────────────────────────────────────────────────
 function IrisMascot() {
   const { RiveComponent } = useRive({
-    src: "/logo.riv", // This pulls from your /public folder in the repository
-    stateMachines: "State Machine 1",
-    autoplay: true,
-  });
-  return <RiveComponent />;
-}
-
-function FadeUp({ children, delay = 0, style = {} }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      style={style}
-    >
-      {children}
-    </motion.div>
-  );
+    src: "/logo.riv",
+@@ -40,22 +40,23 @@ function FadeUp({ children, delay = 0, style = {} }) {
 }
 
 const segments = [
@@ -55,49 +53,71 @@ export default function IrisLensLanding() {
         ::selection { background: ${C.iris}; color: ${C.yellow}; }
         body { background: ${C.paper}; scroll-behavior: smooth; }
         .serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
-        a { color: inherit; transition: opacity 0.2s; text-decoration: none; }
+        a { color: inherit; transition: opacity 0.2s; }
         a:hover { opacity: 0.7; }
         .rive-fill canvas { width: 100% !important; height: 100% !important; object-fit: contain; }
       `}</style>
+
+@@ -68,24 +69,27 @@ export default function IrisLensLanding() {
 
       {/* Top masthead */}
       <header style={{
         position: "relative", zIndex: 10,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "20px 40px", borderBottom: `1px solid ${C.rule}`, background: C.paper
+        padding: "20px 40px",
+        borderBottom: `1px solid ${C.rule}`,
+        background: C.paper
       }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 14 }}>
           <span className="serif" style={{ fontSize: 22, fontWeight: 500, letterSpacing: "-0.02em", fontStyle: "italic", color: C.iris }}>
             IrisLens: Practical AI Upskilling
           </span>
-          <span style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: C.muted }}>est. 2026</span>
+          <span style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: C.muted }}>
+            est. 2026
+          </span>
         </div>
         <nav style={{ display: "flex", gap: 20, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: C.muted, flexWrap: "wrap" }}>
-          <a href="#home">Home</a>
-          <a href="#live" style={{ color: C.iris, fontWeight: 600 }}>• Live Recording</a>
-          <a href="#about">About</a>
+          <a href="#home" style={{ textDecoration: "none" }}>Home</a>
+          <a href="#live" style={{ textDecoration: "none", color: C.iris, fontWeight: 600 }}>• Live Recording</a>
+          <a href="#kits" style={{ textDecoration: "none" }}>Workflow Kits</a>
+          <a href="#archive" style={{ textDecoration: "none" }}>Archive</a>
+          <a href="#about" style={{ textDecoration: "none" }}>About</a>
         </nav>
       </header>
 
+      {/* Issue line */}
+@@ -97,128 +101,65 @@ export default function IrisLensLanding() {
+        color: C.muted,
+        borderBottom: `1px solid ${C.rule}`,
+      }}>
+        <span>Volume 01 · Real-world AI skills for work and life</span>
+        <span style={{ color: C.iris, fontWeight: 600 }}>Ep 01: Recording Today</span>
+      </div>
+
       {/* ── HERO ── */}
-      <section style={{ position: "relative", zIndex: 2, minHeight: "85svh", display: "grid", placeItems: "center", paddingBottom: "100px" }}>
+      <section style={{
+        position: "relative", zIndex: 2,
+        minHeight: "calc(100svh - 140px)",
+        display: "grid",
+        placeItems: "center",
+      }}>
         <FadeUp delay={0.1} style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
-          <h1 className="serif" style={{ fontSize: "clamp(8rem, 22vw, 22rem)", fontWeight: 300, fontStyle: "italic", color: C.iris, opacity: 0.08, letterSpacing: "-0.06em", lineHeight: 0.85, whiteSpace: "nowrap" }}>
+          <h1 className="serif" style={{ fontSize: "clamp(8rem, 22vw, 22rem)", fontWeight: 300, fontStyle: "italic", color: C.iris, opacity: 0.08, letterSpacing: "-0.06em", lineHeight: 0.85, whiteSpace: "nowrap", userSelect: "none" }}>
             Podcast
           </h1>
         </FadeUp>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          initial={{ opacity: 0, scale: 0.85, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
+          transition={{ delay: 0.15, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           className="rive-fill"
-          style={{ width: "min(600px, 70vw)", height: "min(600px, 70vw)", position: "relative", zIndex: 2 }}
+          style={{ position: "relative", zIndex: 2, width: "min(720px, 70vh, 90vw)", height: "min(720px, 70vh, 90vw)", margin: "0 auto" }}
         >
           <IrisMascot />
         </motion.div>
 
-        <FadeUp delay={0.8} style={{ position: "absolute", bottom: 40, textAlign: "center" }}>
+        <FadeUp delay={0.7} style={{ position: "absolute", bottom: 40, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
           <p className="serif" style={{ fontSize: 13, fontStyle: "italic", color: C.iris, letterSpacing: "0.05em", marginBottom: 8 }}>
             Through the iris of a builder
           </p>
@@ -106,83 +126,176 @@ export default function IrisLensLanding() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="live" style={{ background: C.yellow, padding: "100px 40px", textAlign: "center", position: "relative", zIndex: 3 }}>
+      <section style={{ position: "relative", zIndex: 2, padding: "100px 40px", textAlign: "center" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <FadeUp>
+            <p className="serif" style={{ fontSize: "clamp(2rem, 5vw, 4rem)", fontWeight: 300, lineHeight: 1.1, letterSpacing: "-0.03em", color: C.ink }}>
+              Real AI Upskilling — <br/>
+              <span style={{ fontStyle: "italic", color: C.iris }}>for work and beyond.</span>
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.2}>
+            <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap", marginTop: 48 }}>
+              <a href="https://luma.com/irislens" target="_blank" rel="noreferrer" style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                background: C.iris, color: C.yellow,
+                padding: "16px 32px", borderRadius: 2, textDecoration: "none",
+                fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 600,
+              }}>
+                Join the Live Recording →
+              </a>
+              <a href="#about" style={{
+                display: "inline-flex", alignItems: "center",
+                padding: "16px 32px", border: `1px solid ${C.ink}`,
+                color: C.ink, borderRadius: 2, textDecoration: "none",
+                fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase",
+              }}>
+                The Editor's Note
+@@ -228,169 +169,151 @@ export default function IrisLensLanding() {
+        </div>
+      </section>
+
+      {/* ── LIVE SECTION ── */}
+      <section id="live" style={{ position: "relative", zIndex: 2, padding: "80px 40px", background: C.yellow, textAlign: "center" }}>
         <FadeUp>
-          <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: C.iris, marginBottom: 12, fontWeight: 600 }}>Recording Today</p>
-          <h2 className="serif" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: C.ink, lineHeight: 1.1, marginBottom: 20 }}>
-            Real AI Upskilling — <span style={{ fontStyle: "italic", color: C.iris }}>for work and beyond.</span>
-          </h2>
-          <p style={{ maxWidth: 650, margin: "0 auto 40px", fontSize: 18, lineHeight: 1.6 }}>
-            Join the live teardown to witness AI workflows built in real-time. 
-            <strong> Registration for Episode 01 is now open via Luma.</strong>
-          </p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
-            <a href="https://lu.ma/irislens" target="_blank" rel="noreferrer" style={{
-              background: C.iris, color: C.yellow, padding: "18px 36px", borderRadius: 2, 
-              fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700
+          <div style={{ maxWidth: 800, margin: "0 auto" }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: C.iris, marginBottom: 12, fontWeight: 600 }}>
+              Happening Now
+            </p>
+            <h2 className="serif" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: C.ink, marginBottom: 20, lineHeight: 1.1 }}>
+              Join the Live Workflow Teardown
+            </h2>
+            <p style={{ fontSize: 18, color: C.ink, marginBottom: 32, opacity: 0.9, lineHeight: 1.5 }}>
+              Register on Luma to join the live session and ask questions. 
+              <strong> Subscribers receive the Workflow Kit</strong> after the show.
+            </p>
+            <a href="https://luma.com/irislens" target="_blank" rel="noreferrer" style={{
+              display: "inline-flex", alignItems: "center", background: C.iris, color: C.yellow,
+              padding: "18px 36px", borderRadius: 2, textDecoration: "none", fontSize: 13, 
+              letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600
             }}>
-              Register for the Show →
+              Register on Luma →
             </a>
           </div>
         </FadeUp>
       </section>
+      <div style={{ position: "relative", zIndex: 2, display: "flex", alignItems: "center", justifyContent: "center", gap: 16, padding: "80px 40px" }}>
+        <div style={{ flex: 1, maxWidth: 200, height: 1, background: C.rule }}/>
+        <span className="serif" style={{ fontStyle: "italic", color: C.iris, fontSize: 22 }}>❋</span>
+        <div style={{ flex: 1, maxWidth: 200, height: 1, background: C.rule }}/>
+      </div>
 
-      {/* ── ABOUT / THE EDITOR'S NOTE ── */}
-      <section id="about" style={{ padding: "120px 40px", position: "relative", zIndex: 2 }}>
+      {/* ── ABOUT / EDITOR'S NOTE ── */}
+      <section id="about" style={{ position: "relative", zIndex: 2, padding: "40px 40px 60px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <FadeUp>
-            <p style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: C.iris, marginBottom: 24, textAlign: "center" }}>The Editor's Note</p>
-            <p className="serif" style={{ fontSize: "clamp(1.3rem, 2.4vw, 1.85rem)", fontWeight: 300, lineHeight: 1.45, color: C.ink }}>
-              <span style={{ fontSize: "4rem", fontStyle: "italic", float: "left", lineHeight: 0.85, marginRight: 12, marginTop: 6, color: C.iris }}>T</span>
-              he tooling shifts every week. The skill of applying AI shouldn't have to. 
-              We teardown the workflows that help you win at work and reclaim your time at home. 
-              Practical upskilling for the modern operator.
+            <p style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: C.iris, marginBottom: 24, textAlign: "center" }}>
+              The Editor's Note
             </p>
           </FadeUp>
+          <FadeUp delay={0.1}>
+            <p className="serif" style={{ fontSize: "clamp(1.3rem, 2.4vw, 1.85rem)", fontWeight: 300, lineHeight: 1.45, letterSpacing: "-0.01em", color: C.ink }}>
+              <span className="serif" style={{ fontSize: "4rem", fontStyle: "italic", float: "left", lineHeight: 0.85, marginRight: 12, marginTop: 6, color: C.iris, fontWeight: 400 }}>T</span>
+              he tooling shifts every week. The <em style={{ color: C.iris }}>skill</em> of applying AI shouldn't have to. 
+              We teardown the workflows that help you win at work and reclaim your time at home. 
+              Practical upskilling for the non-technical operator.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, marginTop: 80 }}>
-            <FadeUp delay={0.2}>
-              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Host</h4>
-              <p style={{ fontSize: 14, lineHeight: 1.6 }}><strong>Iris</strong> — A builder focused on operational efficiency and practical AI implementation.</p>
-            </FadeUp>
-            <FadeUp delay={0.3}>
-              <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Mission</h4>
-              <p style={{ fontSize: 14, lineHeight: 1.6 }}>To bridge the gap between AI demos and actual utility for non-technical professionals.</p>
-            </FadeUp>
+      {/* ── TEAM SECTION ── */}
+      <section id="about-team" style={{ position: "relative", zIndex: 2, padding: "0 40px 100px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40 }}>
+          <FadeUp delay={0.2}>
+            <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Host</h4>
+            <p style={{ fontSize: 14, lineHeight: 1.6, color: C.ink }}>
+              <strong>Iris</strong> — A builder focused on the intersection of operational efficiency and AI implementation for work and life.
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.3}>
+            <h4 className="serif" style={{ fontStyle: "italic", color: C.iris, marginBottom: 12 }}>The Mission</h4>
+            <p style={{ fontSize: 14, lineHeight: 1.6, color: C.ink }}>
+              To bridge the gap between "cool AI demos" and "actual utility" for the modern operator.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+      {/* ── FORMAT ── */}
+      <section id="format" style={{ position: "relative", zIndex: 2, background: C.iris, color: C.paper, padding: "100px 40px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: 60 }}>
+              <p style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: C.yellow, marginBottom: 16 }}>The Format</p>
+              <h2 className="serif" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)", fontWeight: 300, fontStyle: "italic", letterSpacing: "-0.02em", color: C.paper }}>
+                50 minutes of practical building.
+              </h2>
+            </div>
+          </FadeUp>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", borderTop: `1px solid rgba(245, 239, 227, 0.2)` }}>
+            {segments.map(({ num, time, label }, i) => (
+              <FadeUp key={label} delay={i * 0.1} style={{ display: "flex" }}>
+                <div style={{ flex: 1, padding: "40px 28px", borderRight: i < segments.length - 1 ? `1px solid rgba(245, 239, 227, 0.2)` : "none", borderBottom: `1px solid rgba(245, 239, 227, 0.2)` }}>
+                  <p className="serif" style={{ fontSize: 14, fontStyle: "italic", color: C.yellow, marginBottom: 16, letterSpacing: "0.1em" }}>Movement {num}</p>
+                  <p className="serif" style={{ fontSize: 64, fontWeight: 300, lineHeight: 1, letterSpacing: "-0.04em", color: C.paper, marginBottom: 4 }}>
+                    {time}<span style={{ fontSize: 18, fontStyle: "italic", marginLeft: 4, color: C.yellow }}>min</span>
+                  </p>
+                  <p style={{ fontSize: 13, color: "rgba(245, 239, 227, 0.7)", letterSpacing: "0.05em", marginTop: 12 }}>{label}</p>
+                </div>
+              </FadeUp>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── FORMAT ── */}
-      <section style={{ background: C.iris, color: C.paper, padding: "100px 40px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <FadeUp style={{ textAlign: "center", marginBottom: 60 }}>
-            <h2 className="serif" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontStyle: "italic" }}>50 minutes of practical building.</h2>
-          </FadeUp>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", borderTop: `1px solid rgba(245, 239, 227, 0.2)` }}>
-            {segments.map(({ num, time, label }, i) => (
-              <div key={label} style={{ padding: "40px 28px", borderRight: i < 3 ? `1px solid rgba(245, 239, 227, 0.2)` : "none" }}>
-                <p className="serif" style={{ fontSize: 14, fontStyle: "italic", color: C.yellow, marginBottom: 10 }}>Movement {num}</p>
-                <p className="serif" style={{ fontSize: 50, fontWeight: 300, color: C.paper }}>{time}<span style={{ fontSize: 16, opacity: 0.6, marginLeft: 4 }}>m</span></p>
-                <p style={{ fontSize: 12, marginTop: 10, opacity: 0.8 }}>{label}</p>
-              </div>
+      {/* ── WORKFLOW KITS ── */}
+      <section id="kits" style={{ position: "relative", zIndex: 2, padding: "100px 40px", textAlign: "center", borderBottom: `1px solid ${C.rule}` }}>
+        <FadeUp>
+          <h2 className="serif" style={{ fontSize: "2.5rem", color: C.iris }}>Workflow Kits</h2>
+          <p style={{ color: C.muted, marginTop: 10 }}>Downloadable prompt libraries and tools from every episode. Coming soon.</p>
+        </FadeUp>
+      </section>
+      {/* ── ARCHIVE ── */}
+      <section id="archive" style={{ position: "relative", zIndex: 2, padding: "100px 40px", textAlign: "center" }}>
+        <FadeUp>
+          <h2 className="serif" style={{ fontSize: "2.5rem", color: C.ink }}>Archive</h2>
+          <p style={{ color: C.muted, marginTop: 10 }}>Our library of past teardowns. Under construction.</p>
+        </FadeUp>
+      </section>
+      {/* ── LISTEN & SUBSCRIBE ── */}
+      <section id="listen" style={{ position: "relative", zIndex: 2, padding: "120px 40px", textAlign: "center" }}>
+        <FadeUp>
+          <p style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: C.iris, marginBottom: 24 }}>Stay Tuned</p>
+        </FadeUp>
+        <FadeUp delay={0.1}>
+          <h2 className="serif" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 300, fontStyle: "italic", letterSpacing: "-0.03em", color: C.ink, marginBottom: 20 }}>
+            The Workflow Kits <br/>
+            <span style={{ fontStyle: "normal", color: C.iris }}>are in development.</span>
+          </h2>
+          <p style={{ maxWidth: 600, margin: "0 auto 40px", color: C.muted, fontSize: 16, lineHeight: 1.5 }}>
+            Our Substack and Podcast feeds are currently being provisioned. <br/> 
+            Registration for the <strong>Ep 01 Kit</strong> is open via Luma above.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.2}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 32, flexWrap: "wrap", opacity: 0.6 }}>
+            {["Spotify", "Apple Podcasts", "Substack", "YouTube"].map((p) => (
+              <span key={p} className="serif" style={{ color: C.ink, paddingBottom: 4, borderBottom: `1px solid ${C.rule}`, fontStyle: "italic", fontSize: 18 }}>
+                {p} (Coming Soon)
+              </span>
             ))}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ padding: "80px 40px 40px", textAlign: "center", borderTop: `1px solid ${C.rule}` }}>
-        <FadeUp>
-          <div style={{ display: "flex", justifyContent: "center", gap: 30, flexWrap: "wrap", opacity: 0.4, marginBottom: 40 }}>
-             {["Spotify", "Apple Podcasts", "Substack", "YouTube"].map((p) => (
-              <span key={p} className="serif" style={{ fontStyle: "italic" }}>{p} (Coming Soon)</span>
-            ))}
-          </div>
-          <p style={{ fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: C.muted }}>
-            © {new Date().getFullYear()} IrisLens · Practical AI Upskilling
-          </p>
-        </FadeUp>
+      <footer style={{ position: "relative", zIndex: 2, borderTop: `1px solid ${C.rule}`, padding: "32px 40px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: C.muted }}>
+        <span>© {new Date().getFullYear()} IrisLens: Practical AI Upskilling</span>
+        <span className="serif" style={{ fontStyle: "italic", textTransform: "none", letterSpacing: "0", fontSize: 14, color: C.iris }}>
+          Made with care.
+        </span>
       </footer>
     </main>
   );
