@@ -1,32 +1,17 @@
-temp page.js
-1 parent 
-92edd83
- commit 
-835cfa0
-1 file changed
-
-+138
--215
-Lines changed: 138 additions & 215 deletions
-File tree
-Filter files…
-app
-page.js
-Search within code
- 
-‎app/page.js‎
-+138
--215
-Lines changed: 138 additions & 215 deletions
-Original file line number	Original file line	Diff line number	Diff line change
-@@ -1,6 +1,6 @@
 "use client";
 
 import React from "react";
 import { useRive } from "@rive-app/react-canvas";
 import { motion } from "framer-motion";
 
-@@ -15,7 +15,7 @@ const C = {
+// ─── Palette ─────────────────────────────────────────────────────────────────
+const C = {
+  paper:   "#F5EFE3",
+  ink:     "#1F1A2E",
+  iris:    "#5B2D8E",
+  irisDk:  "#3D1E60",
+  yellow:  "#FFE455",
+  rule:    "rgba(31, 26, 46, 0.18)",
   muted:   "rgba(31, 26, 46, 0.55)",
 };
 
@@ -34,7 +19,24 @@ import { motion } from "framer-motion";
 function IrisMascot() {
   const { RiveComponent } = useRive({
     src: "/logo.riv",
-@@ -40,22 +40,23 @@ function FadeUp({ children, delay = 0, style = {} }) {
+    stateMachines: "State Machine 1",
+    autoplay: true,
+  });
+  return <RiveComponent />;
+}
+
+function FadeUp({ children, delay = 0, style = {} }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      style={style}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
 const segments = [
@@ -58,7 +60,12 @@ export default function IrisLensLanding() {
         .rive-fill canvas { width: 100% !important; height: 100% !important; object-fit: contain; }
       `}</style>
 
-@@ -68,24 +69,27 @@ export default function IrisLensLanding() {
+      {/* Paper grain overlay */}
+      <div style={{
+        position: "fixed", inset: 0, pointerEvents: "none", zIndex: 1,
+        backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.18 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        mixBlendMode: "multiply",
+      }}/>
 
       {/* Top masthead */}
       <header style={{
@@ -86,7 +93,11 @@ export default function IrisLensLanding() {
       </header>
 
       {/* Issue line */}
-@@ -97,128 +101,65 @@ export default function IrisLensLanding() {
+      <div style={{
+        position: "relative", zIndex: 2,
+        display: "flex", justifyContent: "space-between",
+        padding: "10px 40px",
+        fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
         color: C.muted,
         borderBottom: `1px solid ${C.rule}`,
       }}>
@@ -152,7 +163,9 @@ export default function IrisLensLanding() {
                 fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase",
               }}>
                 The Editor's Note
-@@ -228,169 +169,151 @@ export default function IrisLensLanding() {
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -180,6 +193,7 @@ export default function IrisLensLanding() {
           </div>
         </FadeUp>
       </section>
+
       <div style={{ position: "relative", zIndex: 2, display: "flex", alignItems: "center", justifyContent: "center", gap: 16, padding: "80px 40px" }}>
         <div style={{ flex: 1, maxWidth: 200, height: 1, background: C.rule }}/>
         <span className="serif" style={{ fontStyle: "italic", color: C.iris, fontSize: 22 }}>❋</span>
@@ -222,6 +236,7 @@ export default function IrisLensLanding() {
           </FadeUp>
         </div>
       </section>
+
       {/* ── FORMAT ── */}
       <section id="format" style={{ position: "relative", zIndex: 2, background: C.iris, color: C.paper, padding: "100px 40px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -257,6 +272,7 @@ export default function IrisLensLanding() {
           <p style={{ color: C.muted, marginTop: 10 }}>Downloadable prompt libraries and tools from every episode. Coming soon.</p>
         </FadeUp>
       </section>
+
       {/* ── ARCHIVE ── */}
       <section id="archive" style={{ position: "relative", zIndex: 2, padding: "100px 40px", textAlign: "center" }}>
         <FadeUp>
@@ -264,6 +280,7 @@ export default function IrisLensLanding() {
           <p style={{ color: C.muted, marginTop: 10 }}>Our library of past teardowns. Under construction.</p>
         </FadeUp>
       </section>
+
       {/* ── LISTEN & SUBSCRIBE ── */}
       <section id="listen" style={{ position: "relative", zIndex: 2, padding: "120px 40px", textAlign: "center" }}>
         <FadeUp>
